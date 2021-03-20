@@ -1,0 +1,3 @@
+rootProject.name = 'kafka-action-notes'
+include '01-hello-producer-consumer'
+

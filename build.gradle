@@ -1,0 +1,49 @@
+plugins {
+    id 'java'
+}
+
+allprojects {
+    group = 'org.xian'
+    version = '0.0.1-SNAPSHOT'
+    sourceCompatibility = '11'
+
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+    dependencies {
+        // Kafka 客户端配置
+        // https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients
+        compile(group: 'org.apache.kafka', name: 'kafka-clients', version: '2.7.0'){
+            exclude group: 'org.slf4j'
+        }
+        // https://mvnrepository.com/artifact/org.projectlombok/lombok
+        compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.12'
+
+
+        // 日志 log4j2 和 slf4j
+        // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-slf4j-impl
+        compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.11.0'
+        // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core
+        implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.0'
+
+
+        // junit
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    }
+}
+
+
+test {
+    useJUnitPlatform()
+}
