@@ -18,7 +18,7 @@ public class HelloProducer {
     /**
      * 目标主题
      */
-    private static final String TOPIC = "test";
+    private static final String TOPIC = "hello-kafka";
 
     /**
      * 异步方式发送消息成功和失败的统计
@@ -29,7 +29,7 @@ public class HelloProducer {
     /**
      * 发送的消息条数
      */
-    private static final int NUM = 100;
+    private static final int NUM = 100000;
 
     public static final CountDownLatch LATCH = new CountDownLatch(NUM);
 
